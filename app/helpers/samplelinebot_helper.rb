@@ -1,0 +1,2 @@
+module SamplelinebotHelper
+end
