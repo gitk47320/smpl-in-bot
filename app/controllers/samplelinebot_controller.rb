@@ -34,8 +34,8 @@ class SamplelinebotController < ApplicationController
             #text: event.message['text']
             text: 'おはよう'
           }
-          end
           client.reply_message(event['replyToken'], message)
+          end
         end
       end
     }
