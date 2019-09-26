@@ -28,12 +28,13 @@ class SamplelinebotController < ApplicationController
       when Line::Bot::Event::Message
         case event.type
         when Line::Bot::Event::MessageType::Text
-          if message.message.text == 'おはよう'
+          if message.message.text == 'おはよう' then
           message = {
             type: 'text',
             #text: event.message['text']
             text: 'おはよう'
           }
+          end
           client.reply_message(event['replyToken'], message)
         end
       end
