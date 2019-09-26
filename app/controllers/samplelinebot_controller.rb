@@ -5,6 +5,7 @@ class SamplelinebotController < ApplicationController
   # callbackアクションのCSRFトークン認証を無効
   protect_from_forgery :except => [:callback]
 
+  # line bot利用のためのキー設定
   def client
     @client ||= Line::Bot::Client.new { |config|
       config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
@@ -14,7 +15,7 @@ class SamplelinebotController < ApplicationController
 
   def callback
     body = request.body.read
-
+    # リクエストの妥当性検証。lineから送られてきたメッセージかどうか
     signature = request.env['HTTP_X_LINE_SIGNATURE']
     unless client.validate_signature(body, signature)
       head :bad_request
@@ -29,7 +30,7 @@ class SamplelinebotController < ApplicationController
         when Line::Bot::Event::MessageType::Text
           message = {
             type: 'text',
-            text: event.message['text']
+            text: 'aaaaaa'
           }
           client.reply_message(event['replyToken'], message)
         end
