@@ -22,7 +22,7 @@ class SamplelinebotController < ApplicationController
     end
 
     events = client.parse_events_from(body)
-    print events
+    #print events
 
     events.each { |event|
       case event
