@@ -40,21 +40,21 @@ class SamplelinebotController < ApplicationController
     ####################################################
     # parse結果に応じてレスポンスを生成する。
     # line botの送信内容のメイン処理
-    events.each do |event|
-      case event.message['text']
-      when 'おはよう' then
-        greeting = 'おはようございます'
-      when 'おやすみ' then
-        greeting = 'おやすみなさい'
-      else
-        greeting = 'こんにちわ'
-      end
-      message = {
-        type: 'text',
-        text: greeting
-      }
-      client.reply_message(event['replyToken'], message)
-    end
+    # events.each do |event|
+    #   case event.message['text']
+    #   when 'おはよう' then
+    #     greeting = 'おはようございます'
+    #   when 'おやすみ' then
+    #     greeting = 'おやすみなさい'
+    #   else
+    #     greeting = 'こんにちわ'
+    #   end
+    #   message = {
+    #     type: 'text',
+    #     text: greeting
+    #   }
+    #   client.reply_message(event['replyToken'], message)
+    # end
 
     ##################################
     ### オウム返しbot応用（演習問題）###
