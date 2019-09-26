@@ -24,9 +24,9 @@ class SamplelinebotController < ApplicationController
     # リクエスト内容をparseする
     events = client.parse_events_from(body)
 
-    ###################
-    # その1　オウム返し#
-    ###################
+    #############
+    # オウム返し #
+    #############
     # events.each do |event|
     #   message = {
     #     type: 'text',
@@ -35,9 +35,9 @@ class SamplelinebotController < ApplicationController
     #   client.reply_message(event['replyToken'], message)
     # end
 
-    ###########################################################
-    ### その２　オウム返しbot応用（送信内容によって返信を変える）###
-    ###########################################################
+    ####################################################
+    ### オウム返しbot応用（送信内容によって返信を変える）###
+    ####################################################
     # parse結果に応じてレスポンスを生成する。
     # line botの送信内容のメイン処理
     events.each do |event|
@@ -56,6 +56,29 @@ class SamplelinebotController < ApplicationController
       client.reply_message(event['replyToken'], message)
     end
 
+    ##################################
+    ### オウム返しbot応用（演習問題）###
+    ##################################
+    # parse結果に応じてレスポンスを生成する。
+    # line botの送信内容のメイン処理
+    events.each do |event|
+      case event.message['type']
+      when 'text' then
+      message = {
+        type: 'text',
+        text: greeting
+      }
+      when 'sticker' then
+      message = {
+        type: 'sticker',
+        packageId: '11537',
+        stickerId: '52002734'
+      }
+      else
+        greeting = 'こんにちわ'
+      end
+      client.reply_message(event['replyToken'], message)
+    end
     head :ok
   end
 end
