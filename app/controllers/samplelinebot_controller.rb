@@ -30,7 +30,7 @@ class SamplelinebotController < ApplicationController
       if event.type == 'message' && event.message.text == 'おはよう'
         message = {
           type: 'text',
-          text: 'おはよう'
+          text: event.message['text']
         }
       end
       client.reply_message(event['replyToken'], message)
@@ -51,7 +51,6 @@ class SamplelinebotController < ApplicationController
     #     end
     #   end
     # end
-
     head :ok
   end
 end
