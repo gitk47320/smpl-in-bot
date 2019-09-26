@@ -32,8 +32,8 @@ class SamplelinebotController < ApplicationController
           type: 'text',
           text: event.message['text']
         }
+        client.reply_message(event['replyToken'], message)
       end
-      client.reply_message(event['replyToken'], message)
     end
 
     # events.each do |event|
