@@ -27,7 +27,7 @@ class SamplelinebotController < ApplicationController
     # parse結果に応じてレスポンスを生成する。
     # line botの送信内容のメイン処理
     events.each do |event|
-      if event.type == 'message'
+      if event.message.type == 'message'
         message = {
           type: 'text',
           text: event.message['text']
