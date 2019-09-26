@@ -29,7 +29,7 @@ class SamplelinebotController < ApplicationController
     events.each do |event|
       if event.type == 'message' && event.message.text == 'おはよう'
         message = {
-          type: 'text'
+          type: 'text',
           text: 'おはよう'
         }
       end
