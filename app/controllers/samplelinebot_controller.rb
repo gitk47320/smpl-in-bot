@@ -31,7 +31,6 @@ class SamplelinebotController < ApplicationController
           if event.message.text == 'おはよう' then
           message = {
             type: 'text',
-            #text: event.message['text']
             text: 'おはよう'
           }
           client.reply_message(event['replyToken'], message)
