@@ -30,7 +30,7 @@ class SamplelinebotController < ApplicationController
         when Line::Bot::Event::MessageType::Text
           message = {
             type: 'text',
-            text: 'aaaaaa'
+            text: event.message['text'] + 'ありがとう'
           }
           client.reply_message(event['replyToken'], message)
         end
