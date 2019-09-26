@@ -27,33 +27,33 @@ class SamplelinebotController < ApplicationController
     ###################
     # その1　オウム返し#
     ###################
-    events.each do |event|
-      message = {
-        type: 'text',
-        text: event.message['text'] 
-      }
-      client.reply_message(event['replyToken'], message)
-    end
+    # events.each do |event|
+    #   message = {
+    #     type: 'text',
+    #     text: event.message['text'] 
+    #   }
+    #   client.reply_message(event['replyToken'], message)
+    # end
 
     ###########################################################
     ### その２　オウム返しbot応用（送信内容によって返信を変える）###
     ###########################################################
     # parse結果に応じてレスポンスを生成する。
     # line botの送信内容のメイン処理
-    # events.each do |event|
-    #   if event.message['type'] == 'text'
-    #     message = {
-    #       type: 'text',
-    #       text: 
-    #     }
-    #   else
-    #     message = {
-    #       type: 'text',
-    #       text: '文字以外を送らないでください'
-    #     }
-    #   end
-    #   client.reply_message(event['replyToken'], message)
-    # end
+    events.each do |event|
+      if event.message['text'] == 'おはよう'
+        greeting = 'おはようございます'
+      elsif event.message['text'] == 'おやすみ' 
+        greeting = 'おやすみなさい'
+      else
+        greeting = 'こんにちわ'
+      end
+      message = {
+        type: 'text',
+        text: greeting
+      }
+      client.reply_message(event['replyToken'], message)
+    end
 
     head :ok
   end
