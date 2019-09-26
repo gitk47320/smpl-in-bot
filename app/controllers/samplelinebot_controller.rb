@@ -24,39 +24,37 @@ class SamplelinebotController < ApplicationController
     # リクエスト内容をparseする
     events = client.parse_events_from(body)
 
-    # parse結果に応じてレスポンスを生成する。
-    # line botの送信内容のメイン処理
+    ###################
+    # その1　オウム返し#
+    ###################
     events.each do |event|
-      print event
-      if event.message['type'] == 'text'
-        message = {
-          type: 'text',
-          text: event.message['text']
-        }
-      else
-        message = {
-          type: 'text',
-          text: '文字以外を送らないでください'
-        }
-      end
+      message = {
+        type: 'text',
+        text: event.message['text'] 
+      }
       client.reply_message(event['replyToken'], message)
     end
 
+    ###########################################################
+    ### その２　オウム返しbot応用（送信内容によって返信を変える）###
+    ###########################################################
+    # parse結果に応じてレスポンスを生成する。
+    # line botの送信内容のメイン処理
     # events.each do |event|
-    #   case event
-    #   when Line::Bot::Event::Message
-    #     case event.type
-    #     when Line::Bot::Event::MessageType::Text
-    #       if event.message.text == 'おはよう' then
-    #         message = {
-    #           type: 'text',
-    #           text: event.message['text']
-    #         }
-    #       end
-    #     client.reply_message(event['replyToken'], message)
-    #     end
+    #   if event.message['type'] == 'text'
+    #     message = {
+    #       type: 'text',
+    #       text: 
+    #     }
+    #   else
+    #     message = {
+    #       type: 'text',
+    #       text: '文字以外を送らないでください'
+    #     }
     #   end
+    #   client.reply_message(event['replyToken'], message)
     # end
+
     head :ok
   end
 end
