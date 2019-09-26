@@ -41,9 +41,10 @@ class SamplelinebotController < ApplicationController
     # parse結果に応じてレスポンスを生成する。
     # line botの送信内容のメイン処理
     events.each do |event|
-      if event.message['text'] == 'おはよう'
+      case event.message['text']
+      when 'おはよう' then
         greeting = 'おはようございます'
-      elsif event.message['text'] == 'おやすみ' 
+      when 'おやすみ' then
         greeting = 'おやすみなさい'
       else
         greeting = 'こんにちわ'
