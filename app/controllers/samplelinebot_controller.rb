@@ -28,7 +28,7 @@ class SamplelinebotController < ApplicationController
     # line botの送信内容のメイン処理
     events.each do |event|
       print event
-      if event[type] == 'message'
+      if event.type == 'message'
         message = {
           type: 'text',
           text: event.message['text']
