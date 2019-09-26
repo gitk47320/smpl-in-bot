@@ -27,13 +27,13 @@ class SamplelinebotController < ApplicationController
     # parse結果に応じてレスポンスを生成する。
     # line botの送信内容のメイン処理
     events.each do |event|
-      if event.type == 'message' && event.message.text == 'おはよう'
-        message = {
-          type: 'text',
-          text: event.message['text']
-        }
-        client.reply_message(event['replyToken'], message)
-      end
+      #if event.type == 'message' && event.message.text == 'おはよう'
+      message = {
+        type: 'text',
+        text: event.message['text']
+      }
+      #end
+      client.reply_message(event['replyToken'], message)
     end
 
     # events.each do |event|
