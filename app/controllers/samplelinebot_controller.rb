@@ -24,21 +24,21 @@ class SamplelinebotController < ApplicationController
     events = client.parse_events_from(body)
     #print events
 
-    events.each { |event|
+    events.each do |event|
       case event
       when Line::Bot::Event::Message
         case event.type
         when Line::Bot::Event::MessageType::Text
-          if event.message.text == 'おはよう' then
+          #if event.message.text == 'おはよう' then
             message = {
               type: 'text',
-              text: event.message['おはよう']
+              text: event.message['text']
             }
-          end
+          #end
         client.reply_message(event['replyToken'], message)
         end
       end
-    }
+    end
 
     head :ok
   end
