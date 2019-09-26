@@ -21,24 +21,36 @@ class SamplelinebotController < ApplicationController
       head :bad_request
     end
 
+    # リクエスト内容をparseする
     events = client.parse_events_from(body)
-    #print events
 
+    # parse結果に応じてレスポンスを生成する。
+    # line botの送信内容のメイン処理
     events.each do |event|
-      case event
-      when Line::Bot::Event::Message
-        case event.type
-        when Line::Bot::Event::MessageType::Text
-          #if event.message.text == 'おはよう' then
-            message = {
-              type: 'text',
-              text: event.message['text']
-            }
-          #end
-        client.reply_message(event['replyToken'], message)
-        end
+      if event.type == 'message' && event.message.text == 'おはよう' then
+        message = {
+          type: 'text'
+          text: 'おはよう'
+        }
       end
+      client.reply_message(event['replyToken'], message)
     end
+
+    # events.each do |event|
+    #   case event
+    #   when Line::Bot::Event::Message
+    #     case event.type
+    #     when Line::Bot::Event::MessageType::Text
+    #       if event.message.text == 'おはよう' then
+    #         message = {
+    #           type: 'text',
+    #           text: event.message['text']
+    #         }
+    #       end
+    #     client.reply_message(event['replyToken'], message)
+    #     end
+    #   end
+    # end
 
     head :ok
   end
