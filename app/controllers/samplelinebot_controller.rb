@@ -63,11 +63,6 @@ class SamplelinebotController < ApplicationController
     # line botの送信内容のメイン処理
     events.each do |event|
       case event.message['type']
-      when 'text' then
-      message = {
-        type: 'text',
-        text: greeting
-      }
       when 'sticker' then
       message = {
         type: 'sticker',
@@ -75,7 +70,10 @@ class SamplelinebotController < ApplicationController
         stickerId: '52002734'
       }
       else
-        greeting = 'こんにちわ'
+      message = {
+        type: 'text',
+        text: 'こんにちわ'
+      }
       end
       client.reply_message(event['replyToken'], message)
     end
