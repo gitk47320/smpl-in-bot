@@ -88,10 +88,7 @@ class SamplelinebotController < ApplicationController
       url = getlatlonimage(latlon[0], latlon[1])
       message = {
         type: 'image',
-        contentProvider: {
-          type: 'external',
-          originalContentUrl: url
-        }
+        originalContentUrl: url
       }
       client.reply_message(event['replyToken'], message)
     end
