@@ -83,7 +83,7 @@ class SamplelinebotController < ApplicationController
     #####################
     events.each do |event|
       latlon = getlatlon(event.message['text'])
-      getlatlonimg(latlon[0], latlon[1])
+      getlatlonimage(latlon[0], latlon[1])
       client.reply_message(event['replyToken'], message)
     end
     head :ok
