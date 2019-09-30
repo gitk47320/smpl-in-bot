@@ -29,7 +29,7 @@ module Common
     # p latlon
     reqlatlonimgprm = URI.encode_www_form(
       {
-        appid: clientid, 
+        appid: $clientid, 
         lat: lat, 
         lon: lon, 
         z:15, 
