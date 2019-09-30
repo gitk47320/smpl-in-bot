@@ -88,7 +88,7 @@ class SamplelinebotController < ApplicationController
       message = {
         type: 'image',
         contentProvider: {
-          type: 'external'
+          type: 'external',
           originalContentUrl: getlatlonimage(latlon[0], latlon[1])
         }
       }
