@@ -25,13 +25,13 @@ module Common
     return latloninfo
   end
 
-  def getlatlonimage(latlon)
-    p latlon
+  def getlatlonimage(lat, lon)
+    # p latlon
     reqlatlonimgprm = URI.encode_www_form(
       {
         appid: clientid, 
-        lat: latlon[0], 
-        lon: latlon[1], 
+        lat: lat, 
+        lon: lon, 
         z:15, 
         mode: 'map'
       }
