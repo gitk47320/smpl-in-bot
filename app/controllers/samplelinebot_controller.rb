@@ -85,6 +85,7 @@ class SamplelinebotController < ApplicationController
       p event.message['text']
       latlon = getlatlon(event.message['text'])
       p latlon
+      p getlatlonimage(latlon[0], latlon[1])
       message = {
         type: 'image',
         contentProvider: {
