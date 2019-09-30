@@ -21,7 +21,7 @@ module Common
     reslatlon_j   = JSON.parse(reslatlon)
     # p result
     latloninfo    = reslatlon_j["Feature"][0]["Geometry"]["Coordinates"].split(",")
-    # p latloninfo
+    p latloninfo
     return latloninfo
   end
 
