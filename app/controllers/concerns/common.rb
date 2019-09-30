@@ -22,7 +22,7 @@ module Common
     # p result
     latloninfo    = reslatlon_j["Feature"][0]["Geometry"]["Coordinates"].split(",")
     p latloninfo
-    return latloninfo.reverse
+    return latloninfo
   end
 
   def getlatlonimage(lat, lon)
