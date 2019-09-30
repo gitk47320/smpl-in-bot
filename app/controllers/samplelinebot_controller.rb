@@ -82,6 +82,7 @@ class SamplelinebotController < ApplicationController
     ### APIを使ったbot ###
     #####################
     events.each do |event|
+      p event.message['text']
       latlon = getlatlon(event.message['text'])
       p latlon
       getlatlonimage(latlon[0], latlon[1])
