@@ -1,6 +1,7 @@
 class SamplelinebotController < ApplicationController
 # develop for linebot
   require 'line/bot'  # gem 'line-bot-api'
+  include Common
 
   # callbackアクションのCSRFトークン認証を無効
   protect_from_forgery :except => [:callback]
@@ -21,7 +22,6 @@ class SamplelinebotController < ApplicationController
       head :bad_request
     end
 
-    # リクエスト内容をparseする
     events = client.parse_events_from(body)
 
     #############
@@ -61,20 +61,29 @@ class SamplelinebotController < ApplicationController
     ##################################
     # parse結果に応じてレスポンスを生成する。
     # line botの送信内容のメイン処理
+    # events.each do |event|
+    #   case event.message['type']
+    #   when 'sticker' then
+    #   message = {
+    #     type: 'sticker',
+    #     packageId: '11537',
+    #     stickerId: '52002734'
+    #   }
+    #   else
+    #   message = {
+    #     type: 'text',
+    #     text: 'こんにちわ'
+    #   }
+    #   end
+    #   client.reply_message(event['replyToken'], message)
+    # end
+
+    #####################
+    ### APIを使ったbot ###
+    #####################
     events.each do |event|
-      case event.message['type']
-      when 'sticker' then
-      message = {
-        type: 'sticker',
-        packageId: '11537',
-        stickerId: '52002734'
-      }
-      else
-      message = {
-        type: 'text',
-        text: 'こんにちわ'
-      }
-      end
+      latlon = getlatlon event.message['text']
+      getlatlonimg latlon
       client.reply_message(event['replyToken'], message)
     end
     head :ok
