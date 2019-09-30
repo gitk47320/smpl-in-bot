@@ -7,7 +7,7 @@ module Common
   $secret    = 'hCwVoyAW  Cu9hVcgf3OTX2Jwe1Ge8WEmwA7pbCYlX'
 
   def getlatlon(place)
-    # place         = '六本木'
+    p place
     reqlatlonprm  = URI.encode_www_form(
       {
         appid: $clientid, 
