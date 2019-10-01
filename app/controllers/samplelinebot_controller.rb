@@ -98,7 +98,7 @@ class SamplelinebotController < ApplicationController
             }
           ],
           thumbnailImageUrl: url,
-          title: event.message['text']+"はここです",
+          title: event.message['text']+"はここです"
           # text: "今あなたはここにいます"
         }
       }
