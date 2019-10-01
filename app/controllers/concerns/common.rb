@@ -41,3 +41,7 @@ module Common
     reqlatlonimguri = URI.parse("https://map.yahooapis.jp/map/V1/static?#{reqlatlonimgprm}")
   end
 end
+
+#latlon = [11,12]
+
+#print URI.parse("https://www.google.co.jp/maps/@"+"#{latlon[1]},#{latlon[0]},15z")

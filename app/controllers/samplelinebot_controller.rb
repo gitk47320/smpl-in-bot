@@ -94,7 +94,7 @@ class SamplelinebotController < ApplicationController
             {
               type: "buttons",
               label: "地図のリンクはこちら",
-              uri: "https://www.google.co.jp/@"+"#{latlon[1]},#{latlon[0]},15z"
+              uri: URI.parse("https://www.google.co.jp/maps/@"+"#{latlon[1]},#{latlon[0]},15z")
             }
           ],
           thumbnailImageUrl: url,
