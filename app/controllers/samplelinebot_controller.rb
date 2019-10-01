@@ -86,10 +86,27 @@ class SamplelinebotController < ApplicationController
       latlon = getlatlon(event.message['text'])
       url = getlatlonimage(latlon[1], latlon[0])
       message = {
-        type: 'image',
-        originalContentUrl: url,
-        previewImageUrl: url
+        type: "template",
+        altText: "this is a buttons template",
+        template: {
+          type: "buttons",
+          actions: [
+            {
+              type: "message",
+              label: "アクション 1",
+              text: "アクション 1"
+            }
+          ],
+          thumbnailImageUrl: url,
+          title: "居場所",
+          text: "今あなたはここにいます"
+        }
       }
+      # message = {
+      #   type: 'image',
+      #   originalContentUrl: url,
+      #   previewImageUrl: url
+      # }
       client.reply_message(event['replyToken'], message)
     end
     head :ok
