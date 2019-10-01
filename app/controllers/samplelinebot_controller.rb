@@ -94,14 +94,15 @@ class SamplelinebotController < ApplicationController
             {
               type: "buttons",
               label: "地図のリンクはこちら",
-              uri: "https://www.google.co.jp/@"+latlon[1],latlon[0],15z
+              uri: 'https://www.google.co.jp/@'+latlon[1],latlon[0],15z
             }
           ],
           thumbnailImageUrl: url,
-          title: event.message['text']+"はここです"
+          title: event.message['text']+"はここです",
           text: "今あなたはここにいます"
         }
       }
+      p uri
       # message = {
       #   type: 'image',
       #   originalContentUrl: url,
