@@ -102,7 +102,7 @@ class SamplelinebotController < ApplicationController
           text: "今あなたはここにいます"
         }
       }
-      p uri
+      # p uri
       # message = {
       #   type: 'image',
       #   originalContentUrl: url,
