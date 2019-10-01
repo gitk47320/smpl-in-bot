@@ -92,9 +92,9 @@ class SamplelinebotController < ApplicationController
           type: "buttons",
           actions: [
             {
-              type: "message",
-              label: "アクション 1",
-              text: "アクション 1"
+              type: "buttons",
+              label: "地図のリンクはこちら",
+              uri: "https://www.google.co.jp/@"+latlon[1],latlon[0],15z
             }
           ],
           thumbnailImageUrl: url,
