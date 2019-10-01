@@ -92,7 +92,7 @@ class SamplelinebotController < ApplicationController
           type: "buttons",
           actions: [
             {
-              type: "buttons",
+              type: "uri",
               label: "地図のリンクはこちら",
               uri: URI.parse("https://www.google.co.jp/maps/@"+"#{latlon[1]},#{latlon[0]},15z")
             }
