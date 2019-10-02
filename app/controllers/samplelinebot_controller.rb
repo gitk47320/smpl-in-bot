@@ -115,7 +115,7 @@ class SamplelinebotController < ApplicationController
           }
         }
       end
-      client.reply_message(event['replyToken'], message)
+      client.reply_message("defae6df66d341bdad43df5411968f7a", message)
 
     ######################################
     ### テンプレートメッセージを使ったbot ###
