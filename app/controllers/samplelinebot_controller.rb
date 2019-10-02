@@ -106,6 +106,7 @@ class SamplelinebotController < ApplicationController
         ]
         i = i + 1
       end
+      p columns
 
       message = {
           type: "template",
