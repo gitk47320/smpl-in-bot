@@ -105,6 +105,8 @@ class SamplelinebotController < ApplicationController
             ]
           }
         )
+        i = i + 1
+        p i
       end
       # p shops['ResultInfo']['Count']
       message = {
