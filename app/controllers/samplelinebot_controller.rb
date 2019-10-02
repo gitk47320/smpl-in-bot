@@ -89,8 +89,6 @@ class SamplelinebotController < ApplicationController
           type: "location",
           title: "検索結果",
           address: address,
-          latitude: latlon[1],
-          longitude: latlon[0]
       }
       client.reply_message(event['replyToken'], message)
     end
