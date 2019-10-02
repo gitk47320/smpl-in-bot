@@ -105,6 +105,7 @@ class SamplelinebotController < ApplicationController
           }
         )
 
+      p shops['ResultInfo']['Count']
       message = {
           type: "template",
           altText: "this is a carousel template",
