@@ -81,7 +81,7 @@ class SamplelinebotController < ApplicationController
     #####################
     ### APIを使ったbot ###
     #####################
-    events.each_with_index do |event, i|
+    events.each do |event|
       # p event.message['latitude']
       #latlon  = getlatlon(event.message['text'])
       shops = getShops(event.message['latitude'], event.message['longitude'])
@@ -90,6 +90,8 @@ class SamplelinebotController < ApplicationController
       #     title: "検索結果",
       #     address: address,
       # }
+      
+      columns = {type: shops['Feature'][i]['Name'], label: "アクション", text: "アクション"}
       
       message = {
           type: "template",
@@ -101,18 +103,19 @@ class SamplelinebotController < ApplicationController
               {
                 text: shops['Feature'][i]['Name'],
                 actions: [
-                  {
-                    type: "message",
-                    label: "アクション#{i+1}",
-                    text: "アクション#{i+1}"
-                  }
+                  columns
+                  # {
+                  #   type: "message",
+                  #   label: "アクション#{i+1}",
+                  #   text: "アクション#{i+1}"
+                  # }
                 ]
               }
             ]
           }
         }
+      end
       client.reply_message(event['replyToken'], message)
-    end
 
     ######################################
     ### テンプレートメッセージを使ったbot ###
