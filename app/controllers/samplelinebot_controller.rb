@@ -92,7 +92,6 @@ class SamplelinebotController < ApplicationController
       # }
       columns = []
       
-      while i < 3
         columns.push(
           {
             text: shops['Feature'][i]['Name'], 
@@ -105,10 +104,7 @@ class SamplelinebotController < ApplicationController
             ]
           }
         )
-        i = i + 1
-        p i
-      end
-      # p shops['ResultInfo']['Count']
+
       message = {
           type: "template",
           altText: "this is a carousel template",
