@@ -82,14 +82,54 @@ class SamplelinebotController < ApplicationController
     ### APIを使ったbot ###
     #####################
     events.each do |event|
-      p event.message['latitude']
+      # p event.message['latitude']
       #latlon  = getlatlon(event.message['text'])
-      shops = getShops(event.message['latitude'], event.message['longitude'])
+      shops = getShops(event.message['latitude'], event.message['longitude'], event.message['text'])
+      # message = {
+      #     type: "location",
+      #     title: "検索結果",
+      #     address: address,
+      # }
       message = {
-          type: "location",
-          title: "検索結果",
-          address: address,
-      }
+          type: "template",
+          altText: "this is a carousel template",
+          template: {
+            type: "carousel",
+            actions: [],
+            columns: [
+              {
+                text: shops['Feature'][0]['Name'],
+                actions: [
+                  {
+                    type: message,
+                    label: アクション 1,
+                    text: アクション 1
+                  }
+                ]
+              },
+              {
+                text: shops['Feature'][1]['Name'],
+                actions: [
+                  {
+                    type: message,
+                    label: アクション 1,
+                    text: アクション 1
+                  }
+                ]
+              },
+              {
+                text: shops['Feature'][2]['Name'],
+                actions: [
+                  {
+                    type: message,
+                    label: アクション 1,
+                    text: アクション 1
+                  }
+                ]
+              }
+            ]
+          }
+        }
       client.reply_message(event['replyToken'], message)
     end
 

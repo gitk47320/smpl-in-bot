@@ -1,4 +1,4 @@
-module Common
+
   require 'net/http'
   require 'uri'
   require 'json'
@@ -56,28 +56,28 @@ module Common
     addressinfo    = resAddress_j["Feature"][0]["Property"]["Address"]
   end
 
-  def getShops(lat, lon)
+  def getShops(place, lat, lon)
     reqShopsprm  = URI.encode_www_form(
       {
         appid: $clientid,
-        query: 'カフェ',
+        query: place,
         lat: lat,
         lon: lon,
         results: 3,
         output: 'json',
-        dist:1
+        sort: 'dist',
+        dist: 1
       }
     )
-    reqShopsuri  = URI.parse("https://map.yahooapis.jp/geoapi/V1/reverseGeoCoder?#{reqShopsprm}")
-    #p reqShopsuri
+    reqShopsuri  = URI.parse("https://map.yahooapis.jp/search/local/V1/localSearch?#{reqShopsprm}")
+    p reqShopsuri
     resShops    = Net::HTTP.get(reqShopsuri)
     resShops_j   = JSON.parse(resShops)
     #p resShops_j
-    shopsinfo    = resShops_j["Feature"][0]["Property"]["Address"]
+    # shopsinfo    = resShops_j["Feature"][0]["Property"]["Address"]
   end
-end
+
 
 #latlon = [11,12]
 
-#print URI.parse("https://www.google.co.jp/maps/@"+"#{latlon[1]},#{latlon[0]},15z")
-
+getShops('カフェ',35.718586,139.927235)
