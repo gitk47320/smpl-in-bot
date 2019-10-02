@@ -90,7 +90,7 @@ class SamplelinebotController < ApplicationController
       #     title: "検索結果",
       #     address: address,
       # }
-      while i == shops['ResultInfo']['Count']
+      while i < shops['ResultInfo']['Count']
         columns = [
           {
             text: shops['Feature'][i]['Name'], 
@@ -104,7 +104,7 @@ class SamplelinebotController < ApplicationController
           }
         ]
       end
-      
+
       message = {
           type: "template",
           altText: "this is a carousel template",
