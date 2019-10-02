@@ -110,7 +110,7 @@ class SamplelinebotController < ApplicationController
           template: {
             type: "carousel",
             actions: [],
-            columns
+            columns: columns
             # columns: [
             #   {
             #       # {
