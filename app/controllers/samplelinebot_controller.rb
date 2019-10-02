@@ -101,9 +101,9 @@ class SamplelinebotController < ApplicationController
                 text: shops['Feature'][0]['Name'],
                 actions: [
                   {
-                    type: message,
-                    label: アクション 1,
-                    text: アクション 1
+                    type: "message",
+                    label: "アクション1",
+                    text: "アクション"
                   }
                 ]
               },
@@ -111,9 +111,9 @@ class SamplelinebotController < ApplicationController
                 text: shops['Feature'][1]['Name'],
                 actions: [
                   {
-                    type: message,
-                    label: アクション 1,
-                    text: アクション 1
+                    type: "message",
+                    label: "アクション 1",
+                    text: "アクション 1"
                   }
                 ]
               },
@@ -121,9 +121,9 @@ class SamplelinebotController < ApplicationController
                 text: shops['Feature'][2]['Name'],
                 actions: [
                   {
-                    type: message,
-                    label: アクション 1,
-                    text: アクション 1
+                    type: "message",
+                    label: "アクション 1",
+                    text: "アクション 1"
                   }
                 ]
               }
