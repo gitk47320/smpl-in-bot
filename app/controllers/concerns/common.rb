@@ -62,5 +62,3 @@ end
 
 #print URI.parse("https://www.google.co.jp/maps/@"+"#{latlon[1]},#{latlon[0]},15z")
 
-p getAddress(35.7186872,139.9270504)
-
