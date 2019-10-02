@@ -55,6 +55,26 @@ module Common
     p resAddress_j
     addressinfo    = resAddress_j["Feature"][0]["Property"]["Address"]
   end
+
+  def getShops(lat, lon)
+    reqShopsprm  = URI.encode_www_form(
+      {
+        appid: $clientid,
+        query: 'カフェ'
+        lat: lat,
+        lon: lon,
+        results: 3,
+        output: 'json',
+        dist:1
+      }
+    )
+    reqShopsuri  = URI.parse("https://map.yahooapis.jp/geoapi/V1/reverseGeoCoder?#{reqShopsprm}")
+    #p reqShopsuri
+    resShops    = Net::HTTP.get(reqShopsuri)
+    resShops_j   = JSON.parse(resShops)
+    #p resShops_j
+    shopsinfo    = resShops_j["Feature"][0]["Property"]["Address"]
+  end
 end
 
 #latlon = [11,12]
