@@ -92,7 +92,7 @@ class SamplelinebotController < ApplicationController
       #    latitude: latlon[1],
       #    longitude: latlon[0]
       #}
-      client.reply_message(event['replyToken'], message)
+      # client.reply_message(event['replyToken'], message)
     end
 
     ######################################
