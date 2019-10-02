@@ -91,7 +91,17 @@ class SamplelinebotController < ApplicationController
       #     address: address,
       # }
       
-      columns = {type: shops['Feature'][i]['Name'], label: "アクション", text: "アクション"}
+      columns = [
+        {
+          text: shops['Feature'][i]['Name'], 
+          actions: [ 
+            {
+              type: "message", 
+              label: "アクション", 
+              text: "アクション"
+            }
+          ]
+      ]
       
       message = {
           type: "template",
@@ -99,19 +109,17 @@ class SamplelinebotController < ApplicationController
           template: {
             type: "carousel",
             actions: [],
-            columns: [
-              {
-                text: shops['Feature'][i]['Name'],
-                actions: [
-                  columns
-                  # {
-                  #   type: "message",
-                  #   label: "アクション#{i+1}",
-                  #   text: "アクション#{i+1}"
-                  # }
-                ]
-              }
-            ]
+            columns
+            # columns: [
+            #   {
+            #       # {
+            #       #   type: "message",
+            #       #   label: "アクション#{i+1}",
+            #       #   text: "アクション#{i+1}"
+            #       # }
+            #     ]
+            #   }
+            # ]
           }
         }
       
