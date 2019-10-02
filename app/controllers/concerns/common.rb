@@ -1,4 +1,4 @@
-
+module Common
   require 'net/http'
   require 'uri'
   require 'json'
@@ -56,11 +56,11 @@
     addressinfo    = resAddress_j["Feature"][0]["Property"]["Address"]
   end
 
-  def getShops(place, lat, lon)
+  def getShops(lat, lon)
     reqShopsprm  = URI.encode_www_form(
       {
         appid: $clientid,
-        query: place,
+        query: 'ラーメン',
         lat: lat,
         lon: lon,
         results: 3,
@@ -76,8 +76,8 @@
     #p resShops_j
     # shopsinfo    = resShops_j["Feature"][0]["Property"]["Address"]
   end
-
+end
 
 #latlon = [11,12]
 
-getShops('カフェ',35.718586,139.927235)
+# getShops('カフェ',35.718586,139.927235)
