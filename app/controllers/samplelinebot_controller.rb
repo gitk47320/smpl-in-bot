@@ -84,7 +84,7 @@ class SamplelinebotController < ApplicationController
     events.each do |event|
       p event.message['latitude']
       #latlon  = getlatlon(event.message['text'])
-      address = getAddress(event.message['latitude'], event.message['longitude'])
+      shops = getShops(event.message['latitude'], event.message['longitude'])
       message = {
           type: "location",
           title: "検索結果",
