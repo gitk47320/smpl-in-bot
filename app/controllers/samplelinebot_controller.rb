@@ -81,7 +81,7 @@ class SamplelinebotController < ApplicationController
     #####################
     ### APIを使ったbot ###
     #####################
-    events.each do |event|
+    events.each_with_index do |event, i|
       # p event.message['latitude']
       #latlon  = getlatlon(event.message['text'])
       shops = getShops(event.message['latitude'], event.message['longitude'])
@@ -90,6 +90,7 @@ class SamplelinebotController < ApplicationController
       #     title: "検索結果",
       #     address: address,
       # }
+      
       message = {
           type: "template",
           altText: "this is a carousel template",
@@ -98,32 +99,12 @@ class SamplelinebotController < ApplicationController
             actions: [],
             columns: [
               {
-                text: shops['Feature'][0]['Name'],
+                text: shops['Feature'][i]['Name'],
                 actions: [
                   {
                     type: "message",
                     label: "アクション1",
                     text: "アクション"
-                  }
-                ]
-              },
-              {
-                text: shops['Feature'][1]['Name'],
-                actions: [
-                  {
-                    type: "message",
-                    label: "アクション 1",
-                    text: "アクション 1"
-                  }
-                ]
-              },
-              {
-                text: shops['Feature'][2]['Name'],
-                actions: [
-                  {
-                    type: "message",
-                    label: "アクション 1",
-                    text: "アクション 1"
                   }
                 ]
               }
