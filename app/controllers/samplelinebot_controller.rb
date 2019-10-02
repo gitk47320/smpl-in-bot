@@ -87,8 +87,8 @@ class SamplelinebotController < ApplicationController
       address = getAddress(latlon[1], latlon[0])
       message = {
           type: "location",
-          title: 検索結果,
-          address: "千葉県市川市南八幡",
+          title: "検索結果",
+          address: address,
           latitude: latlon[1],
           longitude: latlon[0]
       }
