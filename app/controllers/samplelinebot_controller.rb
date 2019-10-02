@@ -90,7 +90,7 @@ class SamplelinebotController < ApplicationController
       #     title: "検索結果",
       #     address: address,
       # }
-
+      columns = []
       while i < shops['ResultInfo']['Count']
         columns << [
           {
