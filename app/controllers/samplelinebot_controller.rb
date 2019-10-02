@@ -83,15 +83,15 @@ class SamplelinebotController < ApplicationController
     #####################
     events.each do |event|
       p event.message['latitude']
-      latlon  = getlatlon(event.message['text'])
-      address = getAddress(latlon[1], latlon[0])
-      message = {
-          type: "location",
-          title: "検索結果",
-          address: address,
-          latitude: latlon[1],
-          longitude: latlon[0]
-      }
+      #latlon  = getlatlon(event.message['text'])
+      #address = getAddress(latlon[1], latlon[0])
+      #message = {
+      #    type: "location",
+      #    title: "検索結果",
+      #    address: address,
+      #    latitude: latlon[1],
+      #    longitude: latlon[0]
+      #}
       client.reply_message(event['replyToken'], message)
     end
 
