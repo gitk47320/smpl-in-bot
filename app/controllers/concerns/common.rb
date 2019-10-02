@@ -12,12 +12,10 @@ module Common
       {
         appid: $clientid, 
         query: place, 
-        recursive: true,
-        sort: 'address2',
         output: 'json'
       }
     )
-    reqlatlonuri  = URI.parse("https://map.yahooapis.jp/geocode/cont/V1/contentsGeoCoder?#{reqlatlonprm}")
+    reqlatlonuri  = URI.parse("https://map.yahooapis.jp/search/local/V1/localSearch?#{reqlatlonprm}")
     # p uri
     reslatlon     = Net::HTTP.get(reqlatlonuri)
     reslatlon_j   = JSON.parse(reslatlon)
