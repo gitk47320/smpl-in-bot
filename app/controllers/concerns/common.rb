@@ -60,7 +60,7 @@ module Common
     reqShopsprm  = URI.encode_www_form(
       {
         appid: $clientid,
-        query: 'カフェ'
+        query: 'カフェ',
         lat: lat,
         lon: lon,
         results: 3,
