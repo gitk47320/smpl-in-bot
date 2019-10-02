@@ -103,8 +103,8 @@ class SamplelinebotController < ApplicationController
                 actions: [
                   {
                     type: "message",
-                    label: "アクション1",
-                    text: "アクション"
+                    label: "アクション#{i+1}",
+                    text: "アクション#{i+1}"
                   }
                 ]
               }
