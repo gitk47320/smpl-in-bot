@@ -83,30 +83,32 @@ class SamplelinebotController < ApplicationController
     #####################
     events.each do |event|
       p event.message['text']
-      latlon = getlatlon(event.message['text'])
-      url = getlatlonimage(latlon[1], latlon[0])
+      latlon  = getlatlon(event.message['text'])
+      address = getAddress(latlon[1], latlon[0])
       message = {
-        type: "template",
-        altText: "this is a buttons template",
-        template: {
-          type: "buttons",
-          actions: [
-            {
-              type: "uri",
-              label: "地図のリンクはこちら",
-              uri: URI.parse("https://www.google.co.jp/maps/@"+"#{latlon[1]},#{latlon[0]},15z")
-            }
-          ],
-          thumbnailImageUrl: url,
-          title: event.message['text'],
-          text: "今あなたはここにいます"
-        }
+          type: "location",
+          title: 検索結果,
+          address: "千葉県市川市南八幡",
+          latitude: latlon[1],
+          longitude: latlon[0]
       }
-      # p uri
+      # url = getlatlonimage(latlon[1], latlon[0])
       # message = {
-      #   type: 'image',
-      #   originalContentUrl: url,
-      #   previewImageUrl: url
+      #   type: "template",
+      #   altText: "this is a buttons template",
+      #   template: {
+      #     type: "buttons",
+      #     actions: [
+      #       {
+      #         type: "uri",
+      #         label: "地図のリンクはこちら",
+      #         uri: URI.parse("https://www.google.co.jp/maps/@"+"#{latlon[1]},#{latlon[0]},15z")
+      #       }
+      #     ],
+      #     thumbnailImageUrl: url,
+      #     title: event.message['text'],
+      #     text: "今あなたはここにいます"
+      #   }
       # }
       client.reply_message(event['replyToken'], message)
     end
