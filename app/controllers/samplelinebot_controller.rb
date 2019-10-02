@@ -101,6 +101,7 @@ class SamplelinebotController < ApplicationController
               text: "アクション"
             }
           ]
+        }
       ]
       
       message = {
