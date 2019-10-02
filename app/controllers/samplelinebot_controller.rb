@@ -92,7 +92,7 @@ class SamplelinebotController < ApplicationController
       # }
       columns = []
       i = 0
-      while i < shops['ResultIndo']['Count']
+      while i < shops['ResultInfo']['Count']
         columns.push(
           {
             text: shops['Feature'][i]['Name'], 
