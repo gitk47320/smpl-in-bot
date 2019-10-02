@@ -103,6 +103,7 @@ class SamplelinebotController < ApplicationController
             ]
           }
         ]
+        i = i + 1
       end
 
       message = {
