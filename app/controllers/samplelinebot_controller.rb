@@ -90,19 +90,20 @@ class SamplelinebotController < ApplicationController
       #     title: "検索結果",
       #     address: address,
       # }
-      
-      columns = [
-        {
-          text: shops['Feature'][i]['Name'], 
-          actions: [ 
-            {
-              type: "message", 
-              label: "アクション", 
-              text: "アクション"
-            }
-          ]
-        }
-      ]
+      while i == shops['ResultInfo']['Count']
+        columns = [
+          {
+            text: shops['Feature'][i]['Name'], 
+            actions: [ 
+              {
+                type: "message", 
+                label: "アクション", 
+                text: "アクション"
+              }
+            ]
+          }
+        ]
+      end
       
       message = {
           type: "template",
