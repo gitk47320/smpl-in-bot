@@ -91,7 +91,8 @@ class SamplelinebotController < ApplicationController
       #     address: address,
       # }
       columns = []
-      
+      i = 0
+      while i < 3
         columns.push(
           {
             text: shops['Feature'][i]['Name'], 
@@ -104,6 +105,8 @@ class SamplelinebotController < ApplicationController
             ]
           }
         )
+        i = i + 1
+      end
 
       message = {
           type: "template",
