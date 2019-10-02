@@ -52,6 +52,7 @@ module Common
     p reqAddressuri
     resAddress     = Net::HTTP.get(reqAddressuri)
     resAddress_j   = JSON.parse(resAddress)
+    p resAddress_j
     addressinfo    = resAddress_j["Feature"][0]["Property"]["Address"]
   end
 end
