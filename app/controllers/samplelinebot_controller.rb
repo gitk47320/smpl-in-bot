@@ -92,7 +92,7 @@ class SamplelinebotController < ApplicationController
       # }
       columns = []
       i = 0
-      while i < 3
+      while i < shops['ResultIndo']['Count']
         columns.push(
           {
             text: shops['Feature'][i]['Name'], 
@@ -115,16 +115,6 @@ class SamplelinebotController < ApplicationController
             type: "carousel",
             actions: [],
             columns: columns
-            # columns: [
-            #   {
-            #       # {
-            #       #   type: "message",
-            #       #   label: "アクション#{i+1}",
-            #       #   text: "アクション#{i+1}"
-            #       # }
-            #     ]
-            #   }
-            # ]
           }
         }
       
