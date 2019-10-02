@@ -17,7 +17,7 @@ module Common
         output: 'json'
       }
     )
-    reqlatlonuri  = URI.parse("https://map.yahooapis.jp/geocode/V1/geoCoder?#{reqlatlonprm}")
+    reqlatlonuri  = URI.parse("https://map.yahooapis.jp/geocode/cont/V1/contentsGeoCoder?#{reqlatlonprm}")
     # p uri
     reslatlon     = Net::HTTP.get(reqlatlonuri)
     reslatlon_j   = JSON.parse(reslatlon)
