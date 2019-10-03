@@ -86,9 +86,9 @@ class SamplelinebotController < ApplicationController
       #latlon  = getlatlon(event.message['text'])
       shops = getShops(event.message['latitude'], event.message['longitude'])
       columns = []
-      p shops['Feature'][0]['Geometry']['Coordinates'].class
       i = 0
       while i < shops['ResultInfo']['Count']
+        latlon = shops['Feature'][i]['Geometry']['Coordinates'].split(",")
         columns.push(
           {
             text: shops['Feature'][i]['Name'], 
@@ -96,7 +96,7 @@ class SamplelinebotController < ApplicationController
               {
                 type: "uri", 
                 label: "地図を表示", 
-                uri: "https://www.google.co.jp/maps/@#{shops['Feature'][i]['Geometry']['Coordinates']},15z"
+                uri: "https://www.google.co.jp/maps/@#{latlon[1]},#{latlon[0]},15z"
               }
             ]
           }
