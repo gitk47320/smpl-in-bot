@@ -86,6 +86,7 @@ class SamplelinebotController < ApplicationController
       #latlon  = getlatlon(event.message['text'])
       shops = getShops(event.message['latitude'], event.message['longitude'])
       columns = []
+      shops['Feature'][0]['Geometry']['Coordinates']
       i = 0
       while i < shops['ResultInfo']['Count']
         columns.push(
@@ -102,7 +103,6 @@ class SamplelinebotController < ApplicationController
         )
         i = i + 1
       end
-
       message = {
           type: "template",
           altText: "this is a carousel template",
