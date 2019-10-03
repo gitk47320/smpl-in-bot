@@ -82,8 +82,6 @@ class SamplelinebotController < ApplicationController
     ### APIを使ったbot ###
     #####################
     events.each do |event|
-      # p event.message['latitude']
-      #latlon  = getlatlon(event.message['text'])
       shops = getShops(event.message['latitude'], event.message['longitude'])
       columns = []
       i = 0
