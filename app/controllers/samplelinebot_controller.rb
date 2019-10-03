@@ -95,7 +95,7 @@ class SamplelinebotController < ApplicationController
                 actions: [
                   {
                     type: "message",
-                    label: "asa",
+                    label: "おはよう",
                     text: "おはよう"
                   }
                 ]
@@ -105,7 +105,7 @@ class SamplelinebotController < ApplicationController
                 actions: [
                   {
                     type: "message",
-                    label: "hiru",
+                    label: "こんにちわ",
                     text: "こんにちわ"
                   }
                 ]
@@ -115,7 +115,7 @@ class SamplelinebotController < ApplicationController
                 actions: [
                   {
                     type: "message",
-                    label: "yoru",
+                    label: "こんばんわ",
                     text: "こんばんわ"
                   }
                 ]
