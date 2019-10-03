@@ -96,7 +96,7 @@ class SamplelinebotController < ApplicationController
               {
                 type: "uri", 
                 label: "地図を表示", 
-                uri: "https://www.google.co.jp/maps/@#{latlon[1]},#{latlon[0]},15z"
+                uri: "https://www.google.co.jp/maps/@#{latlon[1]},#{latlon[0]},20z"
               }
             ]
           }
