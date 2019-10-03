@@ -95,7 +95,7 @@ class SamplelinebotController < ApplicationController
               {
                 type: "uri", 
                 label: "地図を表示", 
-                uri: "https://www.google.co.jp/maps/@40,135"
+                uri: "https://www.google.co.jp/maps/@#{shops['Feature'][i]['Geometry']['Coordinates']},15z"
               }
             ]
           }
