@@ -78,93 +78,44 @@ class SamplelinebotController < ApplicationController
     #   client.reply_message(event['replyToken'], message)
     # end
 
-    ######################################
-    ### テンプレートメッセージを使ったbot ###
-    ######################################
-    events.each do |event|
-      if event.message['text'] == 'あいさつ'
-        message = {
+    #####################
+    ### APIを使ったbot ###
+    #####################
+    events.each_with_index do |event,i|
+      # p event.message['latitude']
+      #latlon  = getlatlon(event.message['text'])
+      shops = getShops(event.message['latitude'], event.message['longitude'])
+      columns = []
+      i = 0
+      while i < shops['ResultInfo']['Count']
+        columns.push(
+          {
+            text: shops['Feature'][i]['Name'], 
+            actions: [
+              {
+                type: "uri", 
+                label: "地図を表示", 
+                uri: "https://www.google.co.jp/maps/@#{shops['Feature'][i]['Geometry']['Coordinates']}"
+              }
+            ]
+          }
+        )
+        i = i + 1
+      end
+
+      message = {
           type: "template",
           altText: "this is a carousel template",
           template: {
             type: "carousel",
             actions: [],
-            columns: [
-              {
-                text: "朝の挨拶",
-                actions: [
-                  {
-                    type: "message",
-                    label: "おはよう",
-                    text: "おはよう"
-                  }
-                ]
-              },
-              {
-                text: "昼の挨拶",
-                actions: [
-                  {
-                    type: "message",
-                    label: "こんにちわ",
-                    text: "こんにちわ"
-                  }
-                ]
-              },
-              {
-                text: "夜の挨拶",
-                actions: [
-                  {
-                    type: "message",
-                    label: "こんばんわ",
-                    text: "こんばんわ"
-                  }
-                ]
-              }
-            ]
+            columns: columns
           }
         }
+      
       client.reply_message(event['replyToken'], message)
       end
-    end
 
-    #####################
-    ### APIを使ったbot ###
-    #####################
-    # events.each_with_index do |event,i|
-    #   # p event.message['latitude']
-    #   #latlon  = getlatlon(event.message['text'])
-    #   shops = getShops(event.message['latitude'], event.message['longitude'])
-    #   columns = []
-    #   i = 0
-    #   while i < shops['ResultInfo']['Count']
-    #     columns.push(
-    #       {
-    #         text: shops['Feature'][i]['Name'], 
-    #         actions: [
-    #           {
-    #             type: "message", 
-    #             label: "アクション", 
-    #             text: "アクション"
-    #           }
-    #         ]
-    #       }
-    #     )
-    #     i = i + 1
-    #   end
-
-    #   message = {
-    #       type: "template",
-    #       altText: "this is a carousel template",
-    #       template: {
-    #         type: "carousel",
-    #         actions: [],
-    #         columns: columns
-    #       }
-    #     }
-      
-    #   client.reply_message(event['replyToken'], message)
-    #   end
-
-    # head :ok
+    head :ok
   end
 end
