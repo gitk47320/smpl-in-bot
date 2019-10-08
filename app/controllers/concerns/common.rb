@@ -3,9 +3,6 @@ module Common
   require 'uri'
   require 'json'
 
-  $clientid  = 'dj00aiZpPVhMajZLNzNxdUhabyZzPWNvbnN1bWVyc2VjcmV0Jng9OGM-'
-  $secret    = 'hCwVoyAW  Cu9hVcgf3OTX2Jwe1Ge8WEmwA7pbCYlX'
-
   def getlatlon(place)
     reqlatlonprm  = URI.encode_www_form(
       {
