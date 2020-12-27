@@ -24,63 +24,6 @@ class SamplelinebotController < ApplicationController
 
     events = client.parse_events_from(body)
 
-    #############
-    # オウム返し #
-    #############
-    # events.each do |event|
-    #   message = {
-    #     type: 'text',
-    #     text: event.message['text'] 
-    #   }
-    #   client.reply_message(event['replyToken'], message)
-    # end
-
-    ####################################################
-    ### オウム返しbot応用（送信内容によって返信を変える）###
-    ####################################################
-    # parse結果に応じてレスポンスを生成する。
-    # line botの送信内容のメイン処理
-    # events.each do |event|
-    #   case event.message['text']
-    #   when 'おはよう' then
-    #     greeting = 'おはようございます'
-    #   when 'おやすみ' then
-    #     greeting = 'おやすみなさい'
-    #   else
-    #     greeting = 'こんにちわ'
-    #   end
-    #   message = {
-    #     type: 'text',
-    #     text: greeting
-    #   }
-    #   client.reply_message(event['replyToken'], message)
-    # end
-
-    ##################################
-    ### オウム返しbot応用（演習問題）###
-    ##################################
-    # parse結果に応じてレスポンスを生成する。
-    # line botの送信内容のメイン処理
-    # events.each do |event|
-    #   case event.message['type']
-    #   when 'sticker' then
-    #   message = {
-    #     type: 'sticker',
-    #     packageId: '11537',
-    #     stickerId: '52002734'
-    #   }
-    #   else
-    #   message = {
-    #     type: 'text',
-    #     text: 'こんにちわ'
-    #   }
-    #   end
-    #   client.reply_message(event['replyToken'], message)
-    # end
-
-    #####################
-    ### APIを使ったbot ###
-    #####################
     events.each do |event|
       shops = getShops(event.message['latitude'], event.message['longitude'])
       columns = []
